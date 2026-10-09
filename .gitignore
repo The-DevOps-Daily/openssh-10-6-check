@@ -1,0 +1,4 @@
+build/
+opt/
+work/
+.venv/

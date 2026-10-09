@@ -1,0 +1,2 @@
+OpenSSH_10.5p1, OpenSSL 3.0.22 25 Aug 2026
+OpenSSH_10.6p1, OpenSSL 3.0.22 25 Aug 2026

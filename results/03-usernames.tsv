@@ -1,0 +1,97 @@
+client	path	username	exit	outcome	server_saw	client_message
+10.5p1	user@host	<local user>	0	logged-in	localuser	
+10.5p1	user@host	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	user@host	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	user@host	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	-l	<local user>	0	logged-in	localuser	
+10.5p1	-l	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	-l	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	-l	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	-o User=	<local user>	0	logged-in	localuser	
+10.5p1	-o User=	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	-o User=	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	-o User=	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ssh-uri	<local user>	0	logged-in	localuser	
+10.5p1	ssh-uri	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ssh-uri	alice@corp.example.com	255	usage-error		usage: ssh [-46AaCfGgKkMNnqsTtVvXxYyZ] [-B bind_interface] [-b bind_address]
+10.5p1	ssh-uri	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	config-literal	<local user>	0	logged-in	localuser	
+10.5p1	config-literal	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	config-literal	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	config-literal	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	config-env	<local user>	0	logged-in	localuser	
+10.5p1	config-env	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	config-env	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	config-env	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	scp	<local user>	0	logged-in	localuser	
+10.5p1	scp	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	scp	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	scp	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	sftp	<local user>	0	logged-in	localuser	
+10.5p1	sftp	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	sftp	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	sftp	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	rsync	<local user>	0	logged-in	localuser	
+10.5p1	rsync	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	rsync	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	rsync	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	git	<local user>	0	logged-in	localuser	
+10.5p1	git	CORP\alice	128	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	git	alice@corp.example.com	128	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	git	svc-backup$	128	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ansible	<local user>	0	logged-in	localuser	
+10.5p1	ansible	CORP\alice	4	reached-server	CORP\\alice	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ansible	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
+10.5p1	ansible	svc-backup$	4	reached-server	svc-backup$	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ansible+ssh_config	<local user>	4	logged-in	localuser	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: unix_listener: path "./work/cp-10.5p1-ansible_ssh_c
+10.5p1	ansible+ssh_config	CORP\alice	4	reached-server	CORP\\alice	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ansible+ssh_config	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
+10.5p1	ansible+ssh_config	svc-backup$	4	reached-server	svc-backup$	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	user@host	<local user>	0	logged-in	localuser	
+10.6p1	user@host	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	user@host	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	user@host	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	-l	<local user>	0	logged-in	localuser	
+10.6p1	-l	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	-l	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	-l	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	-o User=	<local user>	0	logged-in	localuser	
+10.6p1	-o User=	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	-o User=	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	-o User=	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	ssh-uri	<local user>	0	logged-in	localuser	
+10.6p1	ssh-uri	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	ssh-uri	alice@corp.example.com	255	usage-error		usage: ssh [-46AaCfGgKkMNnqsTtVvXxYyZ] [-B bind_interface] [-b bind_address]
+10.6p1	ssh-uri	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	config-literal	<local user>	0	logged-in	localuser	
+10.6p1	config-literal	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	config-literal	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	config-literal	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	config-env	<local user>	0	logged-in	localuser	
+10.6p1	config-env	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	config-env	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	config-env	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	scp	<local user>	0	logged-in	localuser	
+10.6p1	scp	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	scp	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	scp	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	sftp	<local user>	0	logged-in	localuser	
+10.6p1	sftp	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	sftp	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	sftp	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	rsync	<local user>	0	logged-in	localuser	
+10.6p1	rsync	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	rsync	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	rsync	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	git	<local user>	0	logged-in	localuser	
+10.6p1	git	CORP\alice	128	refused-by-client		remote username contains invalid characters
+10.6p1	git	alice@corp.example.com	128	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	git	svc-backup$	128	refused-by-client		remote username contains invalid characters
+10.6p1	ansible	<local user>	0	logged-in	localuser	
+10.6p1	ansible	CORP\alice	4	refused-by-client		t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: remote username contains invalid characters
+10.6p1	ansible	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
+10.6p1	ansible	svc-backup$	4	refused-by-client		t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: remote username contains invalid characters
+10.6p1	ansible+ssh_config	<local user>	4	logged-in	localuser	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: unix_listener: path "./work/cp-10.6p1-ansible_ssh_c
+10.6p1	ansible+ssh_config	CORP\alice	4	reached-server	CORP\\alice	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	ansible+ssh_config	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
+10.6p1	ansible+ssh_config	svc-backup$	4	reached-server	svc-backup$	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).

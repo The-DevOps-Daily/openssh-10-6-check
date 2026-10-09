@@ -1,0 +1,25 @@
+file             method                              raw_bytes  out_bytes  ratio  cpu_seconds
+access.log       gzip -1                             33554564   5132266    6.54   0.98
+access.log       gzip -6                             33554564   3842656    8.73   1.82
+access.log       zstd -1                             33554564   4396359    7.63   0.44
+access.log       zstd -3                             33554564   4430283    7.57   0.67
+access.log       zlib level 6 (ssh -C before 10.6)   33554564   3845753    8.73   1.50
+access.log       zlib Huffman only (ssh -C in 10.6)  33554564   22086539   1.52   1.25
+events.ndjson    gzip -1                             33554558   7559564    4.44   1.20
+events.ndjson    gzip -6                             33554558   6280716    5.34   2.17
+events.ndjson    zstd -1                             33554558   5988376    5.60   0.51
+events.ndjson    zstd -3                             33554558   6384154    5.26   1.20
+events.ndjson    zlib level 6 (ssh -C before 10.6)   33554558   6246560    5.37   1.78
+events.ndjson    zlib Huffman only (ssh -C in 10.6)  33554558   21039411   1.59   1.20
+openssh-src.tar  gzip -1                             11745280   2844981    4.13   0.49
+openssh-src.tar  gzip -6                             11745280   2358716    4.98   0.99
+openssh-src.tar  zstd -1                             11745280   2440414    4.81   0.19
+openssh-src.tar  zstd -3                             11745280   2188243    5.37   0.43
+openssh-src.tar  zlib level 6 (ssh -C before 10.6)   11745280   2355232    4.99   0.87
+openssh-src.tar  zlib Huffman only (ssh -C in 10.6)  11745280   7254834    1.62   0.43
+random.bin       gzip -1                             16777216   16779984   1.00   1.71
+random.bin       gzip -6                             16777216   16779794   1.00   1.73
+random.bin       zstd -1                             16777216   16777613   1.00   0.24
+random.bin       zstd -3                             16777216   16777613   1.00   0.27
+random.bin       zlib level 6 (ssh -C before 10.6)   16777216   16782342   1.00   1.45
+random.bin       zlib Huffman only (ssh -C in 10.6)  16777216   16782347   1.00   0.47

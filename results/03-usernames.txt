@@ -1,0 +1,49 @@
+path                username                  10.5p1              10.6p1              
+user@host           <local user>              logged-in           logged-in           
+user@host           CORP\alice                reached-server      refused-by-client     <- changed
+user@host           alice@corp.example.com    reached-server      reached-server      
+user@host           svc-backup$               reached-server      refused-by-client     <- changed
+-l                  <local user>              logged-in           logged-in           
+-l                  CORP\alice                reached-server      refused-by-client     <- changed
+-l                  alice@corp.example.com    reached-server      reached-server      
+-l                  svc-backup$               reached-server      refused-by-client     <- changed
+-o User=            <local user>              logged-in           logged-in           
+-o User=            CORP\alice                reached-server      refused-by-client     <- changed
+-o User=            alice@corp.example.com    reached-server      reached-server      
+-o User=            svc-backup$               reached-server      refused-by-client     <- changed
+ssh-uri             <local user>              logged-in           logged-in           
+ssh-uri             CORP\alice                reached-server      refused-by-client     <- changed
+ssh-uri             alice@corp.example.com    usage-error         usage-error         
+ssh-uri             svc-backup$               reached-server      refused-by-client     <- changed
+config-literal      <local user>              logged-in           logged-in           
+config-literal      CORP\alice                reached-server      reached-server      
+config-literal      alice@corp.example.com    reached-server      reached-server      
+config-literal      svc-backup$               reached-server      reached-server      
+config-env          <local user>              logged-in           logged-in           
+config-env          CORP\alice                reached-server      refused-by-client     <- changed
+config-env          alice@corp.example.com    reached-server      reached-server      
+config-env          svc-backup$               reached-server      refused-by-client     <- changed
+scp                 <local user>              logged-in           logged-in           
+scp                 CORP\alice                reached-server      refused-by-client     <- changed
+scp                 alice@corp.example.com    reached-server      reached-server      
+scp                 svc-backup$               reached-server      refused-by-client     <- changed
+sftp                <local user>              logged-in           logged-in           
+sftp                CORP\alice                reached-server      refused-by-client     <- changed
+sftp                alice@corp.example.com    reached-server      reached-server      
+sftp                svc-backup$               reached-server      refused-by-client     <- changed
+rsync               <local user>              logged-in           logged-in           
+rsync               CORP\alice                reached-server      refused-by-client     <- changed
+rsync               alice@corp.example.com    reached-server      reached-server      
+rsync               svc-backup$               reached-server      refused-by-client     <- changed
+git                 <local user>              logged-in           logged-in           
+git                 CORP\alice                reached-server      refused-by-client     <- changed
+git                 alice@corp.example.com    reached-server      reached-server      
+git                 svc-backup$               reached-server      refused-by-client     <- changed
+ansible             <local user>              logged-in           logged-in           
+ansible             CORP\alice                reached-server      refused-by-client     <- changed
+ansible             alice@corp.example.com    reached-server      reached-server      
+ansible             svc-backup$               reached-server      refused-by-client     <- changed
+ansible+ssh_config  <local user>              logged-in           logged-in           
+ansible+ssh_config  CORP\alice                reached-server      reached-server      
+ansible+ssh_config  alice@corp.example.com    reached-server      reached-server      
+ansible+ssh_config  svc-backup$               reached-server      reached-server      

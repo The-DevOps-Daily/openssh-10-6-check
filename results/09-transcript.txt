@@ -1,0 +1,44 @@
+# every ssh below also gets -F work/base_config: port 18022, the test key, BatchMode
+
+$ ssh -V   # 10.5p1
+OpenSSH_10.5p1, OpenSSL 3.0.22 25 Aug 2026
+[exit 0]
+
+$ ssh -V   # 10.6p1
+OpenSSH_10.6p1, OpenSSL 3.0.22 25 Aug 2026
+[exit 0]
+
+$ ssh 'CORP\alice@127.0.0.1' true   # 10.5p1
+CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+[exit 255]
+
+$ ssh 'CORP\alice@127.0.0.1' true   # 10.6p1
+remote username contains invalid characters
+[exit 255]
+
+$ ssh -o 'User=CORP\alice' 127.0.0.1 true   # 10.6p1
+remote username contains invalid characters
+[exit 255]
+
+$ head -3 ssh_config   # the Host block the next two commands use
+Host winbox
+  HostName 127.0.0.1
+  User CORP\alice
+[exit 0]
+
+$ ssh winbox true   # 10.6p1, User line in ssh_config
+CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+[exit 255]
+
+$ WIN_USER='CORP\alice' ssh winbox true   # 10.6p1, User ${WIN_USER} in ssh_config
+remote username contains invalid characters
+[exit 255]
+
+$ ssh 'alice@corp.example.com@127.0.0.1' true   # 10.6p1, UPN form
+alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+[exit 255]
+
+# what the 10.6 sshd logged for the three attempts that reached it:
+Invalid user CORP\\alice from 127.0.0.1 port N
+Invalid user CORP\\alice from 127.0.0.1 port N
+Invalid user alice@corp.example.com from 127.0.0.1 port N

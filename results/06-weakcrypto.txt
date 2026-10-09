@@ -1,0 +1,23 @@
+server  client                                           client_exit  kex                           warning_logged  warning_line
+10.5p1  OpenSSH 10.6p1                                   0            mlkem768x25519-sha256         no              
+10.5p1  OpenSSH 10.5p1                                   0            mlkem768x25519-sha256         no              
+10.5p1  OpenSSH 9.2p1 (Debian 12)                        0            sntrup761x25519-sha512        no              
+10.5p1  OpenSSH 10.6p1, KexAlgorithms=curve25519-sha256  0            curve25519-sha256             no              
+10.5p1  paramiko 5.0.0                                   0            curve25519-sha256@libssh.org  no              
+10.5p1  asyncssh 2.24.1                                  0            mlkem768x25519-sha256         no              
+10.5p1  Go x/crypto/ssh v0.58.0                          0            mlkem768x25519-sha256         no              
+10.5p1  libssh2 1.10.0 (curl sftp)                       0            curve25519-sha256             no              
+10.6p1  OpenSSH 10.6p1                                   0            mlkem768x25519-sha256         no              
+10.6p1  OpenSSH 10.5p1                                   0            mlkem768x25519-sha256         no              
+10.6p1  OpenSSH 9.2p1 (Debian 12)                        0            sntrup761x25519-sha512        no              
+10.6p1  OpenSSH 10.6p1, KexAlgorithms=curve25519-sha256  0            curve25519-sha256             yes             WARNING: connection from 127.0.0.1 port N is not using a post-quantum key exchange a
+10.6p1  paramiko 5.0.0                                   0            curve25519-sha256@libssh.org  yes             WARNING: connection from 127.0.0.1 port N is not using a post-quantum key exchange a
+10.6p1  asyncssh 2.24.1                                  0            mlkem768x25519-sha256         no              
+10.6p1  Go x/crypto/ssh v0.58.0                          0            mlkem768x25519-sha256         no              
+10.6p1  libssh2 1.10.0 (curl sftp)                       0            curve25519-sha256             yes             WARNING: connection from 127.0.0.1 port N is not using a post-quantum key exchange a
+
+# sshd -t with 'Match Address 127.0.0.1' + 'WarnWeakCrypto no-pq-kex':
+./work/sshd-match-test.conf line 10: Directive 'WarnWeakCrypto' is not allowed within a Match block
+[exit 255]
+# and as a global option:
+[exit 0]
