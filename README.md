@@ -22,16 +22,16 @@ Tested on Debian 12 (aarch64). You need `build-essential`, `libssl-dev`, `zlib1g
 
 | Script | What it does | Output |
 | --- | --- | --- |
+| `00-environment.sh` | The machine, and which package repositories ship 10.6 | `results/00-environment.txt` |
 | `01-build.sh` | Downloads both releases, checks the SHA256 sums from the release notes, builds into `opt/` | `results/01-build.txt` |
 | `02-setup.sh` | Host key, client key, a client config and a bare git repo in `work/` | |
-| `00-environment.sh` | The machine, and which package repositories ship 10.6 | `results/00-environment.txt` |
 | `03-usernames.sh` | 4 usernames x 13 ways of passing them (ssh, scp, sftp, rsync, git, Ansible, ssh_config) x both clients, against one 10.6 sshd. The sshd log shows which names arrived | `results/03-usernames.*` |
 | `04-corpus.py` | Seeded test files: an access log, NDJSON events, the OpenSSH source tar, random bytes | `results/04-corpus.txt` |
 | `05-compression.sh` | Every client/server pair moves every file up and down with `-C`, 3 runs. Byte counts come from `ssh -v` | `results/05-compression.*` |
 | `06-weakcrypto.sh` | 8 clients against a 10.5 and a 10.6 sshd: which key exchange they pick and whether sshd logs the new warning | `results/06-weakcrypto.*` |
 | `07-app-compression.sh` | gzip and zstd on the same files, plus plain zlib with `Z_HUFFMAN_ONLY` as a cross-check | `results/07-app-compression.*` |
-| `08-shaped-link.sh` | Times a 32 MiB download over a 20 Mbit/s `tc` link, 5 runs (`RUNS=` to change) |
-| `09-transcript.sh` | A short recorded session used in the write-up | `results/08-shaped-link.*` |
+| `08-shaped-link.sh` | Times a 32 MiB download over a 20 Mbit/s `tc` link, 5 runs (`RUNS=` to change) | `results/08-shaped-link.*` |
+| `09-transcript.sh` | A short recorded session used in the write-up | `results/09-transcript.txt` |
 
 ## Results
 
