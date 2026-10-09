@@ -1,0 +1,12 @@
+date: 2026-10-09
+os: Debian GNU/Linux 12 (bookworm)
+arch: aarch64
+cpus: 4
+memory: 3 GiB
+openssl: OpenSSL 3.0.22 25 Aug 2026 (Library: OpenSSL 3.0.22 25 Aug 2026)
+system ssh: OpenSSH_9.2p1 Debian-2+deb12u10, OpenSSL 3.0.22 25 Aug 2026
+
+# OpenSSH version in package repositories
+homebrew: 10.6p1
+arch core: 10.6p1-1 updated 2026-10-06
+debian: 1:10.6p1-1 in sid

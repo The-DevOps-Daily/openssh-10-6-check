@@ -15,6 +15,10 @@ client	path	username	exit	outcome	server_saw	client_message
 10.5p1	ssh-uri	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.5p1	ssh-uri	alice@corp.example.com	255	usage-error		usage: ssh [-46AaCfGgKkMNnqsTtVvXxYyZ] [-B bind_interface] [-b bind_address]
 10.5p1	ssh-uri	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ssh-uri-encoded	<local user>	0	logged-in	localuser	
+10.5p1	ssh-uri-encoded	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ssh-uri-encoded	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.5p1	ssh-uri-encoded	svc-backup$	255	reached-server	svc-backup$	svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.5p1	config-literal	<local user>	0	logged-in	localuser	
 10.5p1	config-literal	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.5p1	config-literal	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
@@ -43,7 +47,7 @@ client	path	username	exit	outcome	server_saw	client_message
 10.5p1	ansible	CORP\alice	4	reached-server	CORP\\alice	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.5p1	ansible	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
 10.5p1	ansible	svc-backup$	4	reached-server	svc-backup$	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
-10.5p1	ansible+ssh_config	<local user>	4	logged-in	localuser	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: unix_listener: path "./work/cp-10.5p1-ansible_ssh_c
+10.5p1	ansible+ssh_config	<local user>	0	logged-in	localuser	
 10.5p1	ansible+ssh_config	CORP\alice	4	reached-server	CORP\\alice	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.5p1	ansible+ssh_config	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
 10.5p1	ansible+ssh_config	svc-backup$	4	reached-server	svc-backup$	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
@@ -63,6 +67,10 @@ client	path	username	exit	outcome	server_saw	client_message
 10.6p1	ssh-uri	CORP\alice	255	refused-by-client		remote username contains invalid characters
 10.6p1	ssh-uri	alice@corp.example.com	255	usage-error		usage: ssh [-46AaCfGgKkMNnqsTtVvXxYyZ] [-B bind_interface] [-b bind_address]
 10.6p1	ssh-uri	svc-backup$	255	refused-by-client		remote username contains invalid characters
+10.6p1	ssh-uri-encoded	<local user>	0	logged-in	localuser	
+10.6p1	ssh-uri-encoded	CORP\alice	255	refused-by-client		remote username contains invalid characters
+10.6p1	ssh-uri-encoded	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
+10.6p1	ssh-uri-encoded	svc-backup$	255	refused-by-client		remote username contains invalid characters
 10.6p1	config-literal	<local user>	0	logged-in	localuser	
 10.6p1	config-literal	CORP\alice	255	reached-server	CORP\\alice	CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.6p1	config-literal	alice@corp.example.com	255	reached-server	alice@corp.example.com	alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
@@ -91,7 +99,7 @@ client	path	username	exit	outcome	server_saw	client_message
 10.6p1	ansible	CORP\alice	4	refused-by-client		t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: remote username contains invalid characters
 10.6p1	ansible	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
 10.6p1	ansible	svc-backup$	4	refused-by-client		t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: remote username contains invalid characters
-10.6p1	ansible+ssh_config	<local user>	4	logged-in	localuser	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: unix_listener: path "./work/cp-10.6p1-ansible_ssh_c
+10.6p1	ansible+ssh_config	<local user>	0	logged-in	localuser	
 10.6p1	ansible+ssh_config	CORP\alice	4	reached-server	CORP\\alice	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: CORP\\alice@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).
 10.6p1	ansible+ssh_config	alice@corp.example.com	4	reached-server	alice@corp.example.com	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: alice@corp.example.com@127.0.0.1: Permission denied (publickey,password,keyboard-interacti
 10.6p1	ansible+ssh_config	svc-backup$	4	reached-server	svc-backup$	t | UNREACHABLE!: Task failed: Failed to connect to the host via ssh: svc-backup$@127.0.0.1: Permission denied (publickey,password,keyboard-interactive).

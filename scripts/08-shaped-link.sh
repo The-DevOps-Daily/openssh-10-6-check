@@ -11,7 +11,7 @@ CORPUS=$WORK/corpus
 OUT=$RESULTS/08-shaped-link.tsv
 PORT=18025
 RATE=20mbit
-RUNS=${RUNS:-3}
+RUNS=${RUNS:-5}
 FILE=access.log
 CLIENT=$(ssh_bin 10.6p1 ssh)
 

@@ -24,18 +24,20 @@ Tested on Debian 12 (aarch64). You need `build-essential`, `libssl-dev`, `zlib1g
 | --- | --- | --- |
 | `01-build.sh` | Downloads both releases, checks the SHA256 sums from the release notes, builds into `opt/` | `results/01-build.txt` |
 | `02-setup.sh` | Host key, client key, a client config and a bare git repo in `work/` | |
-| `03-usernames.sh` | 4 usernames x 12 ways of passing them (ssh, scp, sftp, rsync, git, Ansible, ssh_config) x both clients, against one 10.6 sshd. The sshd log shows which names arrived | `results/03-usernames.*` |
+| `00-environment.sh` | The machine, and which package repositories ship 10.6 | `results/00-environment.txt` |
+| `03-usernames.sh` | 4 usernames x 13 ways of passing them (ssh, scp, sftp, rsync, git, Ansible, ssh_config) x both clients, against one 10.6 sshd. The sshd log shows which names arrived | `results/03-usernames.*` |
 | `04-corpus.py` | Seeded test files: an access log, NDJSON events, the OpenSSH source tar, random bytes | `results/04-corpus.txt` |
 | `05-compression.sh` | Every client/server pair moves every file up and down with `-C`, 3 runs. Byte counts come from `ssh -v` | `results/05-compression.*` |
 | `06-weakcrypto.sh` | 8 clients against a 10.5 and a 10.6 sshd: which key exchange they pick and whether sshd logs the new warning | `results/06-weakcrypto.*` |
 | `07-app-compression.sh` | gzip and zstd on the same files, plus plain zlib with `Z_HUFFMAN_ONLY` as a cross-check | `results/07-app-compression.*` |
-| `08-shaped-link.sh` | Times a 32 MiB download over a 20 Mbit/s `tc` link, 5 runs | `results/08-shaped-link.*` |
+| `08-shaped-link.sh` | Times a 32 MiB download over a 20 Mbit/s `tc` link, 5 runs (`RUNS=` to change) |
+| `09-transcript.sh` | A short recorded session used in the write-up | `results/08-shaped-link.*` |
 
 ## Results
 
-Usernames: of the 24 cases with `CORP\alice` or `svc-backup$`, 20 reached the server with 10.5 and were refused by 10.6 before it connected. The 4 that still work put the name in a literal `User` line in ssh_config. A `User ${VAR}` line is checked after expansion and is refused. `alice@corp.example.com` works everywhere except inside an `ssh://` URI, where both versions reject it.
+Usernames: of the 26 cases with `CORP\alice` or `svc-backup$`, all reached the server with 10.5, and 22 were refused by 10.6 before it connected. The 4 that still work put the name in a literal `User` line in ssh_config. A `User ${VAR}` line is checked after expansion and is refused. `alice@corp.example.com` reaches the server on every path, except inside an `ssh://` URI without percent-encoding, where both versions reject it.
 
-Compression (wire bytes, set by the side that sends the data):
+Compression (compressed payload bytes from the `ssh -v` counters, set by the side that sends the data; SSH framing and TCP add a little on top):
 
 | File | Raw | Sender 10.5p1 | Sender 10.6p1 |
 | --- | ---: | ---: | ---: |

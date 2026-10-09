@@ -3,6 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 [ -x .venv/bin/python ] || { uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requirements.txt; }
+scripts/00-environment.sh
 scripts/01-build.sh
 scripts/02-setup.sh
 scripts/03-usernames.sh

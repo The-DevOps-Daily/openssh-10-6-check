@@ -15,6 +15,10 @@ ssh-uri             <local user>              logged-in           logged-in
 ssh-uri             CORP\alice                reached-server      refused-by-client     <- changed
 ssh-uri             alice@corp.example.com    usage-error         usage-error         
 ssh-uri             svc-backup$               reached-server      refused-by-client     <- changed
+ssh-uri-encoded     <local user>              logged-in           logged-in           
+ssh-uri-encoded     CORP\alice                reached-server      refused-by-client     <- changed
+ssh-uri-encoded     alice@corp.example.com    reached-server      reached-server      
+ssh-uri-encoded     svc-backup$               reached-server      refused-by-client     <- changed
 config-literal      <local user>              logged-in           logged-in           
 config-literal      CORP\alice                reached-server      reached-server      
 config-literal      alice@corp.example.com    reached-server      reached-server      

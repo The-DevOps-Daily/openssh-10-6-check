@@ -13,10 +13,10 @@ BASE=$WORK/base_config
 ANSIBLE=$ROOT/.venv/bin/ansible
 
 USERNAMES=("$ME" 'CORP\alice' 'alice@corp.example.com' 'svc-backup$')
-PATHS=(user@host -l "-o User=" ssh-uri config-literal config-env scp sftp rsync git ansible ansible+ssh_config)
+PATHS=(user@host -l "-o User=" ssh-uri ssh-uri-encoded config-literal config-env scp sftp rsync git ansible ansible+ssh_config)
 
 start_sshd 10.6p1 18022 "$LOG" "LogLevel VERBOSE" || exit 1
-trap 'stop_sshd 10.6p1 18022; pkill -f "$WORK/cp" 2>/dev/null' EXIT
+trap 'stop_sshd 10.6p1 18022; pkill -f "$WORK/c/" 2>/dev/null' EXIT
 
 run_path() {
   local v=$1 path=$2 u=$3
@@ -27,6 +27,11 @@ run_path() {
     -l) "$ssh" -F "$BASE" -l "$u" 127.0.0.1 true ;;
     "-o User=") "$ssh" -F "$BASE" -o "User=$u" 127.0.0.1 true ;;
     ssh-uri) "$ssh" -F "$BASE" "ssh://$u@127.0.0.1:18022" true ;;
+    ssh-uri-encoded)
+      # The same URI with the username percent-encoded, as RFC 3986 asks.
+      local enc
+      enc=$("$ROOT/.venv/bin/python" -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$u")
+      "$ssh" -F "$BASE" "ssh://$enc@127.0.0.1:18022" true ;;
     config-literal)
       cfg=$WORK/cfg-literal
       printf 'Host t\n  HostName 127.0.0.1\n  User %s\n' "$u" >"$cfg"
@@ -64,7 +69,8 @@ PY
       # Ansible keys its ControlPath on the user it was given, so with no ansible_user every
       # name would reuse one master connection. A directory per run keeps them apart.
       # Ansible prints the failure on stdout; send it where the other paths print theirs.
-      ANSIBLE_HOST_KEY_CHECKING=False ANSIBLE_SSH_CONTROL_PATH_DIR=$WORK/cp-$v-${path//+/_}-$(printf %s "$u" | md5sum | cut -c1-8) \
+      # Unix socket paths are capped near 108 bytes, so keep the directory name short.
+      ANSIBLE_HOST_KEY_CHECKING=False ANSIBLE_SSH_CONTROL_PATH_DIR=$WORK/c/$(printf %s "$v$path$u" | md5sum | cut -c1-8) \
         "$ANSIBLE" all -i "$cfg" -m ping -o </dev/null 1>&2 ;;
   esac
 }
@@ -81,12 +87,14 @@ for v in "${VERSIONS[@]}"; do
       new=$(tail -n +"$((before + 1))" "$LOG")
       saw=$(printf '%s\n' "$new" | sed -nE 's/^(Invalid user|Accepted publickey for) (.*) from 127\.0\.0\.1.*/\2/p' | head -1)
       # Other connections (an Ansible master closing) can log in the same window, so the
-      # client's own refusal message wins over the server log.
+      # client's own refusal message wins over the server log. logged-in also needs the
+      # client to exit 0: authenticating and then failing is not a working login.
       if printf '%s' "$err" | grep -q 'remote username contains invalid characters'; then outcome=refused-by-client; saw=
-      elif printf '%s\n' "$new" | grep -q '^Accepted publickey'; then outcome=logged-in
+      elif printf '%s\n' "$new" | grep -q '^Accepted publickey'; then
+        if [ "$rc" = 0 ]; then outcome=logged-in; else outcome=authenticated-then-failed; fi
       elif printf '%s' "$err" | grep -q '^usage:'; then outcome=usage-error
       elif [ -n "$saw" ]; then outcome=reached-server
-      elif [ -z "$new" ]; then outcome=refused-by-client
+      elif [ -z "$new" ]; then outcome=no-server-log
       else outcome=other
       fi
       msg=$(printf '%s' "$err" | grep -v '^\s*$' | grep -m1 -iE 'invalid|refus|error|denied|fatal|unreachable|failed|usage' | tr '\t' ' ' | cut -c1-160)
